@@ -49,7 +49,7 @@ run_segment() {
 		"banshee")  np=$(__np_banshee) ;;
 		"cmus")  np=$(__np_cmus) ;;
 		"itunes")  np=$(__np_itunes) ;;
-		"lastfm")  np=$        	(__np_lastfm) ;;
+		"lastfm")  np=$(__np_lastfm) ;;
 		"mocp")  np=$(__np_mocp) ;;
 		"mpd")  np=$(__np_mpd) ;;
 		"mpd_simple")  np=$(__np_mpd_simple) ;;
