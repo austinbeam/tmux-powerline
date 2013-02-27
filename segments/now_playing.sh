@@ -12,7 +12,7 @@ TMUX_POWERLINE_SEG_NOW_PLAYING_MPD_SIMPLE_FORMAT_DEFAULT="%artist% - %title%"
 
 generate_segmentrc() {
 	read -d '' rccontents  << EORC
-# Music player to use. Can be any of {audacious, banshee, cmus, itunes, lastfm, mocp, mpd, mpd_simple, rdio, rhythmbox, spotify, spotify_wine}.
+# Music player to use. Can be any of {audacious, banshee, cmus, itunes, lastfm, mocp, mpd, mpd_simple, pithos, rdio, rhythmbox, spotify, spotify_wine}.
 export TMUX_POWERLINE_SEG_NOW_PLAYING_MUSIC_PLAYER=""
 # Maximum output length.
 export TMUX_POWERLINE_SEG_NOW_PLAYING_MAX_LEN="${TMUX_POWERLINE_SEG_NOW_PLAYING_MAX_LEN_DEFAULT}"
@@ -49,7 +49,7 @@ run_segment() {
 		"banshee")  np=$(__np_banshee) ;;
 		"cmus")  np=$(__np_cmus) ;;
 		"itunes")  np=$(__np_itunes) ;;
-		"lastfm")  np=$(__np_lastfm) ;;
+		"lastfm")  np=$        	(__np_lastfm) ;;
 		"mocp")  np=$(__np_mocp) ;;
 		"mpd")  np=$(__np_mpd) ;;
 		"mpd_simple")  np=$(__np_mpd_simple) ;;
@@ -212,11 +212,11 @@ __np_pithos() {
 __np_mocp() {
 	mocp_pid=$(pidof mocp)
 	if [ -n "$mocp_pid" ]; then
-    	np=$(mocp -i | grep ^Title | sed "s/^Title://")
-    	mocp_paused=$(mocp -i | grep ^State | sed "s/^State: //")
+		np=$(mocp -i | grep ^Title | sed "s/^Title://")
+		mocp_paused=$(mocp -i | grep ^State | sed "s/^State: //")
 		if [ -n "$np" -a "$mocp_paused" != "PAUSE" ]; then
-        	echo "$np"
-    	fi
+			echo "$np"
+		fi
 	fi
 }
 
